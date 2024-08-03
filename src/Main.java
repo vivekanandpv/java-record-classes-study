@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Objects;
 
 public class Main {
@@ -26,11 +27,23 @@ public class Main {
     }
 }
 
-//  x, y, and z are called components of the record
-//  all records inherit from java.lang.Record superclass
-//  https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html
-//  records were introduced in Java 16
 record Point3D(int x, int y, int z) {
-    //  A canonical constructor, private final fields for components, getters,
-    //  equals and hasCode methods are implemented behind the scenes
+    //  In case a custom validation is required
+    //  Succinct form of the constructor
+    //  This is also a canonical constructor (int, int, int)
+    public Point3D {
+        if (x < 0 || y < 0 || z < 0) {
+            throw new IllegalArgumentException(String.format("Invalid point combination: %d, %d, %d", x, y, z));
+        }
+
+        //  Field initialization automatically happens after the logic written here
+        //  Manual assignments are not allowed.
+        //  this.x = x; //  Not allowed
+    }
+
+    //  explicit constructor can also be written
+    //  but all such constructors refer to the canonical constructor
+    public Point3D(int x, int y) {
+        this(x, y, 0);
+    }
 }
