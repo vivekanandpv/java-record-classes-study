@@ -34,3 +34,14 @@ record Point3D(int x, int y, int z) {
     //  A canonical constructor, private final fields for components, getters,
     //  equals and hasCode methods are implemented behind the scenes
 }
+
+//  record class is implicitly final.
+//  It cannot be extended, either by another record or by a class
+//  record classes can implement interfaces, however
+//record Point2D(int x, int y) extends Point3D {
+//
+//}
+
+//class Foo extends Point3D {
+//
+//}
