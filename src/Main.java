@@ -38,6 +38,7 @@ record Point3D(int x, int y, int z) {
 //  record class is implicitly final.
 //  It cannot be extended, either by another record or by a class
 //  record classes can implement interfaces, however
+//  annotations can be applied to a record class and its components
 //record Point2D(int x, int y) extends Point3D {
 //
 //}
