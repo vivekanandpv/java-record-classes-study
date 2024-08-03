@@ -6,8 +6,14 @@ public class Main {
     }
 }
 
-record Point3D(int x, int y, int z) {}
-
+//  x, y, and z are called components of the record
+//  all records inherit from java.lang.Record superclass
+//  https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html
+//  records were introduced in Java 16
+record Point3D(int x, int y, int z) {
+    //  A canonical constructor, private final fields for components, getters,
+    //  equals and hasCode methods are implemented behind the scenes
+}
 class Point3DAsClass {
     private final int x;
     private final int y;
