@@ -1,4 +1,34 @@
-import java.util.Objects;
+//  x, y, and z are called components of the record
+//  all records inherit from java.lang.Record superclass
+//  https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html
+//  records were introduced in Java 16
+record Point3D(int x, int y, int z) {
+    //  A canonical constructor, private final fields for components, getters,
+    //  equals and hashCode methods are implemented behind the scenes
+    //  toString is also provided
+    //  equals, hashCode, and toString can be overridden like normal classes
+}
+
+//  record class is implicitly final.
+//  It cannot be extended, either by another record or by a class
+
+//record Point2D(int x, int y) extends Point3D {
+//
+//}
+
+//class Foo extends Point3D {
+//
+//}
+
+//  record classes can implement interfaces, however
+//  annotations can be applied to a record class and its components
+
+//  A record class can be used in the permitted clause of the sealed class
+
+//  A record class can be serialized and deserialized, but the process cannot be
+//  customized by providing writeObject, readObject, readObjectNotData,
+//  writeExternal,readExternal methods. Components govern serialization
+//  while the canonical constructor governs the deserialization
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +44,8 @@ public class Main {
 
         //  getting the value
         System.out.println(p1.x()); //  not as p1.x
+
+        System.out.println(p1); //  toString() is automatically provided
     }
 
     //  record can be used as a regular type in APIs
@@ -26,23 +58,4 @@ public class Main {
     }
 }
 
-//  x, y, and z are called components of the record
-//  all records inherit from java.lang.Record superclass
-//  https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html
-//  records were introduced in Java 16
-record Point3D(int x, int y, int z) {
-    //  A canonical constructor, private final fields for components, getters,
-    //  equals and hasCode methods are implemented behind the scenes
-}
 
-//  record class is implicitly final.
-//  It cannot be extended, either by another record or by a class
-//  record classes can implement interfaces, however
-//  annotations can be applied to a record class and its components
-//record Point2D(int x, int y) extends Point3D {
-//
-//}
-
-//class Foo extends Point3D {
-//
-//}
